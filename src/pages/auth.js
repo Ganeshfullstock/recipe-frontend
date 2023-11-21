@@ -3,6 +3,8 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
+
+
 export const Auth = () => {
   return (
     <div className="auth">
@@ -24,7 +26,9 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const result = await axios.post("http://localhost:3001/auth/login", {
+      const result = await axios.post("https://recipe01-backend.onrender.com/auth/login", {
+      // const result = await axios.post("${Base_Url}/auth/login", 
+
         username,
         password,
       });
@@ -75,7 +79,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:3001/auth/register", {
+      await axios.post("https://recipe01-backend.onrender.com/auth/register", {
         username,
         password,
       });

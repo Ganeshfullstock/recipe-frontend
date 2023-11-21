@@ -10,7 +10,7 @@ export const Home = () => {
     useEffect(() => {
         const fetchRecipe = async () => {
             try {
-                  const response = await axios.get("http://localhost:3001/recipes");
+                  const response = await axios.get("https://recipe01-backend.onrender.com/recipes");
                   setRecipes(response.data);
                            } catch (err) {
                              console.error(err);
@@ -19,7 +19,7 @@ export const Home = () => {
         const fetchSavedRecipe = async () => {
             try {
                   const response = await axios.get(
-                    "http://localhost:3001/recipes/savedRecipes/ids/",{userID}
+                    "https://recipe01-backend.onrender.com/recipes/savedRecipes/ids/",{userID}
                     );
                   setSavedRecipes(response.data.savedrecipes);
                            } catch (err) {
@@ -28,11 +28,11 @@ export const Home = () => {
         }
         fetchRecipe()
         fetchSavedRecipe();
-    }, []);
+    }, [userID]);
 
     const  saveRecipe = async (recipeID) => {
         try {
-            const response = await axios.put("http://localhost:3001/recipes", {
+            const response = await axios.put("https://recipe01-backend.onrender.com/recipes", {
                 recipeID,
                 userID
             });
@@ -63,7 +63,7 @@ export const Home = () => {
                     <p> {recipe.instructions}</p>
                 </div>
                 <img src={recipe.imageUrl} alt={recipe.name} />
-                <p> Cooking Time: {recipe. cookingTime} (minutes)</p>
+                <p> CookingTime: {recipe.cookingTime} (minutes)</p>
             </li>
         ))
         }
